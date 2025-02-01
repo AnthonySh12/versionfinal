@@ -13,8 +13,7 @@ public class MenuForm extends JFrame {
         customizeComponent(titleApp);
 
         pnlMenu.btnHome.addActionListener(e -> setPanel(new MainPanel()));
-        pnlMenu.btnCita.addActionListener(e -> {JOptionPane.showMessageDialog(null, "Boton de Agendar Precionado");
-        setPanel(new AgendarCita());});
+        pnlMenu.btnCita.addActionListener(e -> setPanel(new AgendarCitaPanel()));
     }
 
     private void setPanel(JPanel formularioPanel) {
