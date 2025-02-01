@@ -12,18 +12,19 @@ public class MenuForm extends JFrame {
     public MenuForm(String titleApp) {
         customizeComponent(titleApp);
 
-        pnlMenu.btnHome.addActionListener(e -> setPanel(new MainPanel()));
+        pnlMenu.btnHome.addActionListener(e -> setPanel(new MainPanel())); // Usar el constructor por defecto
         pnlMenu.btnCita.addActionListener(e -> setPanel(new AgendarCitaPanel()));
     }
 
     private void setPanel(JPanel formularioPanel) {
         Container container = getContentPane();
-        container.remove(pnlMain); // Remueve el panel anterior
-        pnlMain = formularioPanel; // Reemplaza con el nuevo panel
-        container.add(pnlMain, BorderLayout.CENTER);
-        revalidate();
-        repaint();
+        container.removeAll(); // Remueve todos los componentes
+        container.add(pnlMenu, BorderLayout.WEST); // Vuelve a agregar el menú
+        container.add(formularioPanel, BorderLayout.CENTER); // Agrega el nuevo panel al centro
+        container.revalidate();
+        container.repaint();
     }
+    
 
     private void customizeComponent(String titleApp) {
         setTitle(titleApp);

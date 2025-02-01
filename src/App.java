@@ -1,13 +1,16 @@
 
-import java.awt.SplashScreen;
 import java.time.LocalDate;
 import java.time.Month;
+
+import javax.swing.SwingUtilities;
 
 import BusinessLogic.entities.Cita;
 import BusinessLogic.entities.GestorCita;
 import DataAccessComponent.DAO.CitaDAO;
 import DataAccessComponent.DTO.CitaDTO;
 import UserInterface.Form.MainPanel;
+import UserInterface.Form.MenuForm;
+import UserInterface.Form.SplashScreen;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -96,7 +99,18 @@ public class App {
         //gc.actualizarCita(citaAux2);
 
         //SplashScreen.show();
-        new MainPanel();
+        //SwingUtilities.invokeLater(new Runnable() {
+        //    public void run(){
+        //        new MenuForm("Aplicacion de Citas");
+        //    }
+        //});
+//
+        //SplashScreen.show();
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run(){
+                new MenuForm("PoliSALUD");
 
+            }
+        });
     }
 }
