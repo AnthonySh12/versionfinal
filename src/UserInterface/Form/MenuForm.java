@@ -6,21 +6,20 @@ import java.awt.Container;
 import javax.swing.*;
 
 public class MenuForm extends JFrame {
-    MenuPanel pnlMenu = new MenuPanel();
+    MenuPanel pnlMenu = new MenuPanel(this);
     JPanel pnlMain = new JPanel();
 
     public MenuForm(String titleApp) {
         customizeComponent(titleApp);
 
         pnlMenu.btnHome.addActionListener(e -> setPanel(new MainPanel())); // Usar el constructor por defecto
-        pnlMenu.btnCita.addActionListener(e -> setPanel(new AgendarCitaPanel()));
+        pnlMenu.btnCita.addActionListener(e -> setPanel(new AgendarCitaPanel(this)));
     }
 
-    private void setPanel(JPanel formularioPanel) {
+    void setPanel(JPanel nuevoPanel) {
         Container container = getContentPane();
         container.removeAll(); // Remueve todos los componentes
-        container.add(pnlMenu, BorderLayout.WEST); // Vuelve a agregar el menú
-        container.add(formularioPanel, BorderLayout.CENTER); // Agrega el nuevo panel al centro
+        container.add(nuevoPanel, BorderLayout.CENTER); // Agrega el nuevo panel al centro
         container.revalidate();
         container.repaint();
     }

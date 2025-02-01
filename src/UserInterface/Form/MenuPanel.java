@@ -13,17 +13,20 @@ import UserInterface.CustomerControl.PatButton;
 
 public class MenuPanel extends JPanel {
     private BufferedImage backgroundImage;
+    private MenuForm parentFrame;
+    
     public PatButton btnHome = new PatButton("Home");
     public PatButton btnCita = new PatButton("Agendar Cita");
 
-    public MenuPanel() {
+    public MenuPanel(MenuForm parentFrame) {
+        this.parentFrame = parentFrame;
+
         // Cargar la imagen de fondo
         try {
             backgroundImage = ImageIO.read(SaludStyle.class.getResource("/UserInterface/Resource/EPNPG.png"));
         } catch (IOException e) {
             System.out.println("No se pudo cargar la imagen de fondo.");
         }   
-
 
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(1020, 720));
@@ -34,15 +37,19 @@ public class MenuPanel extends JPanel {
 
         // Panel para agrupar botones y evitar que se pierdan en el fondo
         JPanel panelButtons = new JPanel();
-            panelButtons.setLayout(new BoxLayout(panelButtons, BoxLayout.Y_AXIS));
-            panelButtons.setOpaque(false);
-            panelButtons.setBackground(Color.RED); // Blanco semi-transparente
-            panelButtons.add(Box.createRigidArea(new Dimension(220, 300)));
-            panelButtons.add(btnHome);
-            panelButtons.add(btnCita);
-            panelButtons.add(Box.createVerticalGlue());
-            add(panelButtons, BorderLayout.WEST);
+        panelButtons.setLayout(new BoxLayout(panelButtons, BoxLayout.Y_AXIS));
+        panelButtons.setOpaque(false);
+        panelButtons.setBackground(Color.RED); 
+        panelButtons.add(Box.createRigidArea(new Dimension(220, 300)));
+        panelButtons.add(btnHome);
+        panelButtons.add(btnCita);
+        panelButtons.add(Box.createVerticalGlue());
 
+        add(panelButtons, BorderLayout.WEST);
+
+        // Acción de los botones
+        btnHome.addActionListener(e -> parentFrame.setPanel(new MenuPanel(parentFrame)));
+        btnCita.addActionListener(e -> parentFrame.setPanel(new AgendarCitaPanel(parentFrame)));
     }
 
     @Override
