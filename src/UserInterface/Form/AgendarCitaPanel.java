@@ -83,7 +83,7 @@ public class AgendarCitaPanel extends JPanel implements ActionListener {
     private void layoutComponents() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.insets = new Insets(5, 5, 5, 255);
         gbc.anchor = GridBagConstraints.WEST;
 
         // Fila 0: Selección de Doctor
@@ -122,9 +122,9 @@ public class AgendarCitaPanel extends JPanel implements ActionListener {
         add(txtObservacion, gbc);
 
         // Fila 5: Botones
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 5;
-        gbc.gridwidth = 2;
+        gbc.gridwidth = 3;
         gbc.anchor = GridBagConstraints.CENTER;
 
         JPanel buttonPanel = new JPanel();

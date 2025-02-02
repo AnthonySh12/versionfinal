@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import javax.swing.*;
+import javax.swing.border.Border;
+
+import UserInterface.GUI.PatCitas;
 
 public class MenuForm extends JFrame {
     MenuPanel pnlMenu = new MenuPanel(this);
@@ -14,9 +17,10 @@ public class MenuForm extends JFrame {
 
         pnlMenu.btnHome.addActionListener(e -> setPanel(new MainPanel())); // Usar el constructor por defecto
         pnlMenu.btnCita.addActionListener(e -> setPanel(new AgendarCitaPanel(this)));
+        pnlMenu.btnCitas.addActionListener(e -> setPanel(new PatCitas(this)));
     }
 
-    void setPanel(JPanel nuevoPanel) {
+    public void setPanel(JPanel nuevoPanel) {
         Container container = getContentPane();
         container.removeAll(); // Remueve todos los componentes
         container.add(nuevoPanel, BorderLayout.CENTER); // Agrega el nuevo panel al centro

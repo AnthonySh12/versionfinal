@@ -105,7 +105,7 @@ public class App {
         //    }
         //});
 //
-        //SplashScreen.show();
+        SplashScreen.show();
         SwingUtilities.invokeLater(new Runnable() {
             public void run(){
                 new MenuForm("PoliSALUD");

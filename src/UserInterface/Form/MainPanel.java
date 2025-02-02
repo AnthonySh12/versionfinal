@@ -11,7 +11,6 @@ public class MainPanel extends JPanel {
     private Image background;
 
     public MainPanel() {
-        // Cargar la imagen de fondo desde SaludStyle (o la que corresponda)
         try {
             background = new ImageIcon(SaludStyle.URL_MAIN).getImage();
         } catch(Exception e) {

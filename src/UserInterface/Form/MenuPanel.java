@@ -4,12 +4,15 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.security.PublicKey;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 import UserInterface.SaludStyle;
 import UserInterface.CustomerControl.PatButton;
+import UserInterface.GUI.PatCitas;
 
 public class MenuPanel extends JPanel {
     private BufferedImage backgroundImage;
@@ -17,6 +20,7 @@ public class MenuPanel extends JPanel {
     
     public PatButton btnHome = new PatButton("Home");
     public PatButton btnCita = new PatButton("Agendar Cita");
+    public PatButton btnCitas = new PatButton("Citas");
 
     public MenuPanel(MenuForm parentFrame) {
         this.parentFrame = parentFrame;
@@ -43,6 +47,7 @@ public class MenuPanel extends JPanel {
         panelButtons.add(Box.createRigidArea(new Dimension(220, 300)));
         panelButtons.add(btnHome);
         panelButtons.add(btnCita);
+        panelButtons.add(btnCitas);
         panelButtons.add(Box.createVerticalGlue());
 
         add(panelButtons, BorderLayout.WEST);
@@ -50,6 +55,7 @@ public class MenuPanel extends JPanel {
         // Acción de los botones
         btnHome.addActionListener(e -> parentFrame.setPanel(new MenuPanel(parentFrame)));
         btnCita.addActionListener(e -> parentFrame.setPanel(new AgendarCitaPanel(parentFrame)));
+        btnCitas.addActionListener(e -> parentFrame.setPanel(new PatCitas(parentFrame)));
     }
 
     @Override
